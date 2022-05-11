@@ -16,9 +16,6 @@ nav#top-gnb .gnb1 li .gnb2 {
 	opacity: 0;
 	transition: all .3s 0s;
 }
-.searchBox {
-	display: none;
-}
 
 /* 공통 영역 */
 section {
@@ -323,7 +320,7 @@ nav#top-gnb {
 }
 
 /* 상단바 검색창 */
-/* .searchBox {
+.searchBox {
 	position: fixed;
 	left: 0;
 	top: 95px;
@@ -334,14 +331,12 @@ nav#top-gnb {
 	background: #fff;
 	z-index: 9998;
 	opacity: 0;
-	visibility: hidden;
-	transition: opacity .5s;
+	transition: all .3s;
 }
 .searchBox.open {
 	opacity: 1;
-	visibility: visible;
 	transition: all .3s;
-} */
+}
 
 /* 메인 화면 영역 */
 section.main {
