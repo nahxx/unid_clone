@@ -15,4 +15,11 @@
       <li>오른쪽의 btn-box의 text와 scroll-icon의 text의 경우 글자가 세로로 나왔기 때문에 rotate를 해서 돌려주었다. scroll-icon의 경우 애니메이션을 지정해주어 움직이도록 구현했다.</li>
     </ol>
   </li>
+  <li> 22/05/11 상단바 구현
+    <ol>
+      <li>상단바 구현을 위해 html입력후 제일 먼저 top-gnb부터 구현했다. css를 주는데 각 박스별로 z-index값이 달라서 이벤트 적용을 해도 클릭이나 hover가 되지않아 애를 먹었다. z-index값을 고치고 header-box를 한번더 div로 감싸주니 해결되었다.</li>
+      <li>top-gnb에 마우스를 올리면 가상요소와 서브메뉴가 나타나고 배경이 바뀌도록 구현했다. jquery를 이용하여 mouseover/mouseout과 click이벤트를 사용했다</li>
+      <li>언어 박스의 경우 slideToggle을 사용하여 클릭할 때마다 나타났다 사라지도록 구현했다.</li>
+    </ol>
+  </li>
 </ul>
