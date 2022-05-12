@@ -1,12 +1,14 @@
+'use strict'
 $(function() {
-
   // 상단바 open class 추가
   // mouseover 이벤트
   $('.gnb1').mouseover(function() {
     $('#top-gnb').addClass('open');
+    colorChangeFunc('#top-gnb', 'open');
   })
   $('.gnb1').mouseout(function() {
     $('#top-gnb').removeClass('open');
+    colorChangeFunc('#top-gnb', 'open');
   });
 
   $('.gnb1 li').each(function() {
@@ -20,7 +22,21 @@ $(function() {
   // 검색창 클릭 이벤트
   $('.openSearch').click(function() {
     $('.searchBox').toggleClass('open');
-  })
+    colorChangeFunc('.searchBox', 'open');
+  });
+  function colorChangeFunc(el, name) {
+    if($(el).hasClass(name)) {
+      $('.header-wrap').css('background', '#fff');
+      $('#top-gnb .gnb1 > li > a, .openBtn, .arrow-icon').css('color', '#000');
+      $('.search-icon img').css('filter', 'invert(0)');
+      $('.sideBtn span').css('background', '#000');
+    } else {
+      $('.header-wrap').css('background', 'none');
+      $('#top-gnb .gnb1 > li > a, .openBtn, .arrow-icon').css('color', '#fff');
+      $('.search-icon img').css('filter', 'invert(1)');
+      $('.sideBtn span').css('background', '#fff');
+    }
+  }
 
   // 상단바 langList click 이벤트 slide 적용
   $('.langBtn').click(function() {
