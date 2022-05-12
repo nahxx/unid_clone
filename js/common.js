@@ -19,6 +19,25 @@ $(function() {
       $(this).removeClass('on');
     });
   });
+  // 사이드메뉴
+  // open class 추가
+  $('.sideBtn').click(function() {
+    $('.sideGnb').addClass('open');
+  });
+  $('.closeBtn').click(function() {
+    $('.sideGnb').removeClass('open');
+  })
+  // .inner mouseover
+  let downloadEl = $('.sideGnb .sideinner .inner .sideGnb1 li:last-child .inner a');
+  downloadEl.mouseover(function() {
+    $(this).css('background', '#3268bf');
+    $('span', this).css('color', '#fff');
+    $('img', this).css('filter', 'invert(1)');
+  }).mouseout(function() {
+    $(this).css('background', 'none');
+    $('span', this).css('color', '#000');
+    $('img', this).css('filter', 'invert(0)');
+  });
   // 검색창 클릭 이벤트
   $('.openSearch').click(function() {
     $('.searchBox').toggleClass('open');
