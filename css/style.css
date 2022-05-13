@@ -1,4 +1,7 @@
 @charset "UTF-8";
+
+property: var(--char-index);
+
 html, body { height: 100%; }
 body, table, th, td, button, select, input, textarea {
 	font-family: 'Montserrat', 'Noto Sans KR', "돋움", Dotum, Arial, sans-serif;
@@ -32,21 +35,42 @@ section {
   margin: 0 auto;
 }
 
-span:hover {
+.gnb2 span:hover, .sidegnb2 span:hover {
 	cursor: pointer;
 	color: #0f6e38;
 	font-weight: 500;
 }
 
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
 /* 헤더 영역 */
 #header {
 	position: absolute;
-	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 95px;
 	z-index: 9999;
+}
+.header-wrap {
+	position: fixed;
+	background: transparent;
+	width: 100%;
+	z-index: 99;
+	background: none;
+	transition: all 0.3s ease-in-out;
+}
+.header-wrap.fixed {
+	background: #fff;
+	border-bottom: 1px solid #e8e8e8;
+	transition: all 0.3s ease-in-out;
 }
 .header-box {
 	position: relative;
@@ -55,23 +79,26 @@ span:hover {
 	margin: 0 auto;
 	padding: 0 50px;
 	box-sizing: border-box;
+	z-index: 102;
 }
 .header-box #logo {
 	position: relative;
-	z-index: 100;
 	float: left;
 	padding-top: 28px;
+	z-index: 102;
+}
+.header-box #logo img {
 }
 .header-box .right-box {
 	position: absolute;
 	top: 50%;
 	right: 50px;
 	margin-top: -12px;
-	z-index: 100;
+	z-index: 102;
 }
 .header-box .right-box div {
 	float: left;
-	z-index: 100;
+	z-index: 102;
 }
 .header-box .right-box .langBtn {
 	position: relative;
@@ -136,6 +163,7 @@ span:hover {
 	margin-left: 17px;
 	padding-top: 2px;
 	box-sizing: border-box;
+	cursor: pointer;
 }
 .header-box .right-box .sideBtn span {
 	display: block;
@@ -161,12 +189,12 @@ nav#top-gnb {
 	top: 0;
 	left: 0;
 	width: 100%;
-	/* z-index: 99; */
+	z-index: 99;
 }
 #top-gnb .gnb1 {
 	position: relative;
 	display: inline-block;
-	z-index: 101;
+	z-index: 102;
 }
 #top-gnb .gnb-bg {
 	overflow: hidden;
@@ -301,6 +329,7 @@ nav#top-gnb {
 	position: absolute;
 	height: 445px;
 	padding-top: 25px;
+	box-sizing: border-box;
 	z-index: 99;
 	display: block;
 	opacity: 1;
@@ -325,7 +354,7 @@ nav#top-gnb {
 	border-top: 1px solid #e8e8e8;
 	border-bottom: 1px solid #e8e8e8;
 	background: #fff;
-	z-index: 9998;
+	z-index: 99;
 	opacity: 0;
 	transition: all .3s;
 	visibility: hidden;
@@ -357,6 +386,9 @@ nav#top-gnb {
 	border-bottom: 2px solid #000;
 	font-size: 20px;
 	font-weight: 100;
+}
+.searchBox form .search-box input#headerSearch:focus {
+	outline: none;
 }
 .searchBox form .search-box .btn-search {
 	position: absolute;
@@ -406,6 +438,7 @@ nav#top-gnb {
 	opacity: 0;
 	visibility: hidden;
 	z-index: 9999;
+	transition: all .3s .4s;
 }
 .header-box section.sideGnb.open {
 	opacity: 1;
@@ -504,11 +537,6 @@ nav#top-gnb {
 	font-size: 30px;
 	color: black;
 	cursor: default;
-}
-.sideGnb .sideinner .inner .sideGnb1 li h2 span:hover {
-	color: black;
-	cursor: default;
-	font-weight: bold;
 }
 .sideGnb .sideinner .inner .sideGnb1 li h2 span em {
 	position: absolute;
@@ -719,8 +747,24 @@ section.main {
   letter-spacing: -2.5px;
   display: block;
 }
-.txt-box h2 span {
-
+.txt-box h2 .word {
+	overflow: hidden;
+	line-height: 1.1;
+	display: inline-block;
+}
+.txt-box h2 .word span {
+	display: inline-block;
+	animation: textAni 1.5s ease both;
+}
+@keyframes textAni {
+	from {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .rotate-icon {
@@ -732,6 +776,7 @@ section.main {
   right: 30px;
   top: 50%;
   margin-top: -40px;
+	animation: fade-in 1s both 2.8s;
 }
 .rotate-icon:before {
   position: absolute;
@@ -787,6 +832,7 @@ section.main {
   top: 50%;
   margin-top: 150px;
   width: 100%;
+	animation: fade-in 1s both 2s;
 }
 .scroll-icon {
   position: relative;
@@ -839,6 +885,7 @@ section.main {
   right: 2.7%;
   margin-top: -154px;
   z-index: 999;
+	animation: btnBoxAni 2s ease-in-out both;
 }
 .main .btn-box ul {
   width: 100%;
@@ -874,4 +921,14 @@ section.main {
 }
 .main .btn-box ul li + li {
   margin-top: 55px;
+}
+@keyframes btnBoxAni {
+	from {
+		opacity: 0;
+		right: -10%;
+	}
+	top {
+		opacity: 1;
+		right: 2.7%;
+	}
 }

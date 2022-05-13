@@ -4,11 +4,15 @@ $(function() {
   // mouseover 이벤트
   $('.gnb1').mouseover(function() {
     $('#top-gnb').addClass('open');
+    $('.searchBox').removeClass('open');
+    $('.langList').slideUp();
     colorChangeFunc('#top-gnb', 'open');
+    $('.gnb2').css('display', 'inline-block');
   })
   $('.gnb1').mouseout(function() {
     $('#top-gnb').removeClass('open');
     colorChangeFunc('#top-gnb', 'open');
+    $('.gnb2').css('display', 'none');
   });
 
   $('.gnb1 li').each(function() {
@@ -23,6 +27,10 @@ $(function() {
   // open class 추가
   $('.sideBtn').click(function() {
     $('.sideGnb').addClass('open');
+    setTimeout(function() {
+      $('.langList').slideUp();
+      $('.searchBox').removeClass('open');
+    }, 500);
   });
   $('.closeBtn').click(function() {
     $('.sideGnb').removeClass('open');
@@ -39,21 +47,25 @@ $(function() {
     $('img', this).css('filter', 'invert(0)');
   });
   // 검색창 클릭 이벤트
-  $('.openSearch').click(function() {
+  $('.openSearch').on('click', function() {
     $('.searchBox').toggleClass('open');
+    $('.langList').slideUp();
+    $('.langList').css('z-index', 99);
     colorChangeFunc('.searchBox', 'open');
   });
   function colorChangeFunc(el, name) {
     if($(el).hasClass(name)) {
-      $('.header-wrap').css('background', '#fff');
+      $('.header-box').css('background', '#fff');
       $('#top-gnb .gnb1 > li > a, .openBtn, .arrow-icon').css('color', '#000');
       $('.search-icon img').css('filter', 'invert(0)');
       $('.sideBtn span').css('background', '#000');
     } else {
-      $('.header-wrap').css('background', 'none');
-      $('#top-gnb .gnb1 > li > a, .openBtn, .arrow-icon').css('color', '#fff');
-      $('.search-icon img').css('filter', 'invert(1)');
-      $('.sideBtn span').css('background', '#fff');
+      if($('.header-wrap').hasClass('fixed') == false) {
+        $('.header-box').css('background', 'none');
+        $('#top-gnb .gnb1 > li > a, .openBtn, .arrow-icon').css('color', '#fff');
+        $('.search-icon img').css('filter', 'invert(1)');
+        $('.sideBtn span').css('background', '#fff');
+      }
     }
   }
 
@@ -61,6 +73,20 @@ $(function() {
   $('.langBtn').click(function() {
     $('.langList').slideToggle();
   })
+
+  // 스크롤 한번 내려가면 상단바 흰색으로 고정
+  let wHeight = $(window).height();
+  $(window).scroll(function() {
+    if($(this).scrollTop() != 0) {
+      $('.header-wrap').addClass('fixed');
+      colorChangeFunc('.header-wrap', 'fixed');
+      $('.header-box').css('background', 'none');
+    } else {
+      $('.header-wrap').removeClass('fixed');
+      colorChangeFunc('.header-wrap', 'fixed');
+      $('.header-box').css('background', 'none');
+    }
+  });
 
   // 메인화면 유투브 영상을 배경으로 사용(JQuery.mb.YTPlayer 사용)
   // https://urliveblogger.blogspot.com/2021/01/jquery-mb-YTplayer.html 참고
@@ -78,4 +104,11 @@ $(function() {
       $('circle').css('stroke-dashoffset', `${strDashOffset}px`);
     }
   }, 50);
+
+  // 메인화면 span.word 인덱스붙이고 delay 넣기
+  let wordIdx = 0;
+  $('.word').find('span').each(function() {
+    $(this).css('--char-index', wordIdx).css('animation-delay', `${1 + (0.03 * wordIdx)}s`);
+    wordIdx++;
+  });
 });
