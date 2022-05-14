@@ -7,12 +7,12 @@ $(function() {
     $('.searchBox').removeClass('open');
     $('.langList').slideUp();
     colorChangeFunc('#top-gnb', 'open');
-    $('.gnb2').css('display', 'inline-block');
+    // $('.gnb2').css('display', 'inline-block');
   })
   $('.gnb1').mouseout(function() {
     $('#top-gnb').removeClass('open');
     colorChangeFunc('#top-gnb', 'open');
-    $('.gnb2').css('display', 'none');
+    // $('.gnb2').css('display', 'none');
   });
 
   $('.gnb1 li').each(function() {
@@ -27,6 +27,7 @@ $(function() {
   // open class 추가
   $('.sideBtn').click(function() {
     $('.sideGnb').addClass('open');
+    $('.right-box').css('visibility', 'hidden');
     setTimeout(function() {
       $('.langList').slideUp();
       $('.searchBox').removeClass('open');
@@ -34,6 +35,7 @@ $(function() {
   });
   $('.closeBtn').click(function() {
     $('.sideGnb').removeClass('open');
+    $('.right-box').css('visibility', 'visible');
   })
   // .inner mouseover
   let downloadEl = $('.sideGnb .sideinner .inner .sideGnb1 li:last-child .inner a');
