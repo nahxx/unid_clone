@@ -122,4 +122,15 @@ $(function() {
   // 섹션1 business에 동영상 넣기
   $('#sec1-video1').YTPlayer();
   $('#sec1-video2').YTPlayer();
+
+  // 섹션4 news 영역 .news-bottom p의 글자수 체크 영역(ellipsis)
+  $('.news-bottom p').each(function() {
+    let elem = $(this);
+    let content = elem.text();
+    const showTextLeng = 80;
+    let lessText = content.substr(0, showTextLeng);
+    if(content.length > showTextLeng) {
+      elem.text(`${lessText}…`);
+    }
+  });
 });

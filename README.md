@@ -47,4 +47,9 @@
       visibility로 조절해주니 제대로 delay가 적용되었다.</li>
     </ol>
   </li>
+  <li>
+    <ol>
+     <li>섹션4 css 적용. swiper 코드를 가져와서 적용했다. 사이트에서 가져온 코드에서 몇가지 옵션을 추가해주었다. loop(무한루프), slidesPerView(화면에 보이는 슬라이드 수),</li>
+    </ol>
+  </li>
 </ul>
