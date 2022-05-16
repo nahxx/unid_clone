@@ -1743,15 +1743,18 @@ section.main {
 	width: 28.5%;
 	margin-right: 30px;
 	flex-shrink: 0;
+	transition: all .5s
 }
 .news .cnt-box .news-wrap .news-box .news-li a {
 	position: relative;
+	/* width: 100%; */
 	height: 455px;
 	padding: 40px 40px 110px;
 	display: block;
 	background: #fff;
 	box-shadow: 5px 5px 18px -2.5px rgba(0, 0, 0, .09);
 	box-sizing: border-box;
+	transition: background .3s;
 }
 .news-top {
 	position: relative;
@@ -1775,6 +1778,9 @@ section.main {
 	color: #0f6f39;
 }
 .news-bottom {
+	margin-top: 60px;
+}
+.news-bottom.img-wrap {
 	margin-top: 20px;
 }
 .news-bottom h5 {
@@ -1806,4 +1812,26 @@ section.main {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+.news .cnt-box .news-wrap .news-box .news-li a:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	width: 100%;
+	height: 100%;
+	/* border: 0px solid #0f6f39; */
+	box-sizing: border-box;
+	transition: all .2s;
+}
+.news .cnt-box .news-wrap .news-box .news-li.swiper-slide-active a {
+	background: #0f6f39;
+	box-shadow: none;
+}
+.news .cnt-box .news-wrap .news-box .news-li.swiper-slide-active {
+	width: 35%;
+}
+.news-li.swiper-slide-active .news-top .date span, .news-li.swiper-slide-active .news-top .date b, .news-li.swiper-slide-active .news-bottom h5, .news-li.swiper-slide-active .news-bottom p {
+	color: #fff;
+	border-color: #fff;
 }
