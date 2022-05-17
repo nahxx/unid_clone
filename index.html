@@ -915,17 +915,89 @@
       </section>
       <!-- 푸터 영역 -->
       <footer id="footer">
-        <!-- 푸터 왼쪽 -->
-        <!-- 푸터 오른쪽 -->
+        <div class="footer-inner">
+          <!-- 탑버튼 -->
+          <div class="area-box">
+            <!-- 푸터 왼쪽 -->
+            <div class="f-left">
+              <span class="footer-logo">
+                <img src="./img/footer_logo.png" alt="유니드로고">
+              </span>
+              <ul class="f-menu">
+                <li><a href="#">전자공고/공시</a></li>
+                <li><a href="#">영업소</a></li>
+                <li><a href="#">고객지원</a></li>
+                <li><a href="#">글로벌 네트워크</a></li>
+              </ul>
+              <div class="f-address">
+                <p>서울특별시 중구 을지로5길 19(수하동) 페럼타워 17층</p>
+                <p>TEL : 02.0000.0000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAX : 02.1111.1111</p>
+              </div>
+              <div class="f-link">
+                <ul>
+                  <li><a href="#">개인정보 처리방침</a></li>
+                  <li><a href="#">영상정보처리기기 운영/관리방침</a></li>
+                  <li><a href="#">신문고</a></li>
+                  <li><a href="#">네이버 블로그</a></li>
+                  <li>
+                    <div class="family-box">
+                      <button class="family-open">FAMILY SITE</button>
+                      <ul class="family-list">
+                        <li><a href="#">유니드글로벌상사</a></li>
+                        <li><a href="#">올고다</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><a href="#">원재료&middot;제품 입출고현황</a></li>
+                </ul>
+              </div>
+              <div class="f-copy">COPYRIGHT 2021<span>UNID</span>. ALL RIGHTS RESERVED</div>
+            </div>
+            <!-- 푸터 오른쪽 -->
+            <form>
+              <div class="f-right">
+                <input type="hidden" name="lang" value="1">
+                <div class="f-top">
+                  <h5>온라인 문의<span>Online Inquiry</span></h5>
+                  <div class="c">
+                    <a href="#">개인정보처리방침 보기</a>
+                    <div class="check-box">
+                      <img src="./img/check.png" alt="체크">
+                      <span>동의</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="f-bottom">
+                  <ul>
+                    <li>
+                      <input type="text" name="name" placeholder="성명을 입력해주세요.">
+                    </li>
+                    <li class="empty">$nbsp;</li>
+                    <li>
+                      <input type="text" name="tel"placeholder="연락처를 입력해주세요.">
+                    </li>
+                    <li>
+                      <input type="text" name="email" placeholder="이메일을 입력해주세요.">
+                    </li>
+                    <li>
+                      <textarea name="content" cols="30" rows="10" placeholder="내용을 입력해주세요. (150자 이내)"></textarea>
+                    </li>
+                  </ul>
+                  <button class="f-btn">작성완료</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </footer>
     </div>
     <script>
       var swiper = new Swiper(".mySwiper", {
-        slidesPerView : 3.2,
+        slidesPerView : 'auto',
         loop : true,   // 슬라이드 반복 여부
         loopAdditionalSlides : 1,
         spaceBetween: 30,
-        centeredSlides: true,
+        centeredSlides: false,
         autoplay: {
           delay: 5000,
           disableOnInteraction: false,
