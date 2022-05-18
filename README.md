@@ -59,4 +59,9 @@
       <li>푸터영역 html, css 적용</li>
     </ol>
   </li>
+  <li> 22/05/18
+    <ol>
+      <li>푸터영역 좌우 list에 flex-grow: 0; flex-shrink: 0; 지정해주어, 일정 크기 이상으로 늘어나거나 이하로 줄어들지 않게 함</li>
+    </ol>
+  </li>
 </ul>

@@ -1851,9 +1851,13 @@ section.main {
 }
 .footer-inner .area-box .f-left {
 	flex: 590px;
+	flex-grow: 0;
+	flex-shrink: 0;
 }
 .footer-inner .area-box .f-right {
 	flex: 600px;
+	flex-grow: 0;
+	flex-shrink: 0;
 }
 .f-left .footer-logo {
 	display: block;
@@ -1914,5 +1918,5 @@ section.main {
 	float: left;
 }
 .f-left .f-link ul li a {
-	
+
 }
