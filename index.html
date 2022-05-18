@@ -918,52 +918,73 @@
         <div class="footer-inner">
           <!-- 탑버튼 -->
           <div class="area-box">
-            <!-- 푸터 왼쪽 -->
-            <div class="f-left">
-              <span class="footer-logo">
-                <img src="./img/footer_logo.png" alt="유니드로고">
-              </span>
-              <ul class="f-menu">
-                <li><a href="#">전자공고/공시</a></li>
-                <li><a href="#">영업소</a></li>
-                <li><a href="#">고객지원</a></li>
-                <li><a href="#">글로벌 네트워크</a></li>
-              </ul>
-              <div class="f-address">
-                <p>서울특별시 중구 을지로5길 19(수하동) 페럼타워 17층</p>
-                <p>TEL : 02.0000.0000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAX : 02.1111.1111</p>
-              </div>
-              <div class="f-link">
-                <ul>
-                  <li><a href="#">개인정보 처리방침</a></li>
-                  <li><a href="#">영상정보처리기기 운영/관리방침</a></li>
-                  <li><a href="#">신문고</a></li>
-                  <li><a href="#">네이버 블로그</a></li>
-                  <li>
-                    <div class="family-box">
-                      <button class="family-open">FAMILY SITE</button>
-                      <ul class="family-list">
-                        <li><a href="#">유니드글로벌상사</a></li>
-                        <li><a href="#">올고다</a></li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li><a href="#">원재료&middot;제품 입출고현황</a></li>
-                </ul>
-              </div>
-              <div class="f-copy">COPYRIGHT 2021<span>UNID</span>. ALL RIGHTS RESERVED</div>
-            </div>
-            <!-- 푸터 오른쪽 -->
             <form>
+              <!-- 푸터 왼쪽 -->
+              <div class="f-left">
+                <span class="footer-logo">
+                  <img src="./img/footer_logo.png" alt="유니드로고">
+                </span>
+                <ul class="f-menu">
+                  <li><a href="#">전자공고/공시</a></li>
+                  <li><a href="#">영업소</a></li>
+                  <li><a href="#">고객지원</a></li>
+                  <li><a href="#">글로벌 네트워크</a></li>
+                </ul>
+                <div class="f-address">
+                  <p>서울특별시 중구 을지로5길 19(수하동) 페럼타워 17층</p>
+                  <p>TEL : 02.0000.0000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAX : 02.1111.1111</p>
+                </div>
+                <div class="f-link">
+                  <ul>
+                    <li>
+                      <img src="./img/description.png" alt="개인정보 처리방침">
+                      <a href="#">개인정보 처리방침</a>
+                    </li>
+                    <li class="gray">
+                      <img src="./img/description.png" alt="영상정보처리기기 운영/관리방침">
+                      <a href="#">영상정보처리기기 운영/관리방침</a>
+                    </li>
+                    <li class="gray">
+                      <img src="./img/text.png" alt="신문고">
+                      <a href="#">신문고</a>
+                    </li>
+                    <li>
+                      <img src="./img/blog.png" alt="네이버 블로그">
+                      <a href="#">네이버 블로그</a>
+                    </li>
+                    <li>
+                      <div class="family-box">
+                        <button class="family-open">
+                          FAMILY SITE
+                          <img src="./img/arrow.png" alt="FAMILY SITE">
+                        </button>
+                        <ul class="family-list">
+                          <li><a href="#">유니드글로벌상사</a></li>
+                          <li><a href="#">올고다</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="gray">
+                      <img src="./img/open-icon.png" alt="원재료,제품 입출고현황">
+                      <a href="#">원재료&middot;제품 입출고현황</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="f-copy">COPYRIGHT 2021<span>UNID</span>. ALL RIGHTS RESERVED</div>
+              </div>
+              <!-- 푸터 오른쪽 -->
               <div class="f-right">
                 <input type="hidden" name="lang" value="1">
                 <div class="f-top">
                   <h5>온라인 문의<span>Online Inquiry</span></h5>
-                  <div class="c">
+                  <div class="check-wrap">
                     <a href="#">개인정보처리방침 보기</a>
                     <div class="check-box">
                       <img src="./img/check.png" alt="체크">
-                      <span>동의</span>
+                      <input type="checkbox" id="check" name="checkbox">
+                      <label for="check">
+                        <span>동의</span>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -972,7 +993,7 @@
                     <li>
                       <input type="text" name="name" placeholder="성명을 입력해주세요.">
                     </li>
-                    <li class="empty">$nbsp;</li>
+                    <li class="empty">&nbsp;</li>
                     <li>
                       <input type="text" name="tel"placeholder="연락처를 입력해주세요.">
                     </li>
@@ -983,7 +1004,12 @@
                       <textarea name="content" cols="30" rows="10" placeholder="내용을 입력해주세요. (150자 이내)"></textarea>
                     </li>
                   </ul>
-                  <button class="f-btn">작성완료</button>
+                  <div class="f-btnBox">
+                    <button class="f-btn">
+                      <span>작성완료</span>
+                      <img src="./img/send.png" alt="작성완료">
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>

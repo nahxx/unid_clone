@@ -108,13 +108,13 @@ $(function() {
   }, 50);
 
   // 메인화면 span.word 인덱스붙이고 delay 넣기
-  wordDelayFunc('.txt-box');
+  wordDelayFunc('.txt-box', 1);
 
   // word의 span에 delay 적용하기
-  function wordDelayFunc(el) {
+  function wordDelayFunc(el, num) {
     let wordIdx = 0;
     $(el).find('.word').find('span').each(function() {
-      $(this).css('--char-index', wordIdx).css('animation-delay', `${1 + (0.03 * wordIdx)}s`);
+      $(this).css('--char-index', wordIdx).css('animation-delay', `${num + (0.03 * wordIdx)}s`);
       wordIdx++;
     });
   }
@@ -122,6 +122,9 @@ $(function() {
   // 섹션1 business에 동영상 넣기
   $('#sec1-video1').YTPlayer();
   $('#sec1-video2').YTPlayer();
+
+  // 섹션1 span.word 인덱스붙이고 delay 넣기
+  wordDelayFunc('.sec .inner', 0);
 
   // 섹션4 news 영역 .news-bottom p의 글자수 체크 영역(ellipsis)
   $('.news-bottom p').each(function() {
@@ -133,4 +136,13 @@ $(function() {
       elem.text(`${lessText}…`);
     }
   });
+
+  // 푸터영역 왼쪽박스 family-box 서브리스트 on 클래스 toggle
+  $('.family-open').click(function() {
+    $(this).toggleClass('on');
+    $('.family-list').slideToggle();
+  });
+
+  // 스크롤이벤트 move 클래스 추가
+
 });
