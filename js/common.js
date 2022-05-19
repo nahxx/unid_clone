@@ -107,8 +107,12 @@ $(function() {
     }
   }, 50);
 
-  // 메인화면 span.word 인덱스붙이고 delay 넣기
-  wordDelayFunc('.txt-box', 1);
+  // span.word 인덱스붙이고 delay 넣기
+  wordDelayFunc('.txt-box', 1); // 메인
+  wordDelayFunc('.business .inner', 0); // 섹션1
+  wordDelayFunc('.about .inner', 0); // 섹션2
+  wordDelayFunc('.global .inner', 0); // 섹션3
+  wordDelayFunc('.news .inner', 0); // 섹션4
 
   // word의 span에 delay 적용하기
   function wordDelayFunc(el, num) {
@@ -122,9 +126,6 @@ $(function() {
   // 섹션1 business에 동영상 넣기
   $('#sec1-video1').YTPlayer();
   $('#sec1-video2').YTPlayer();
-
-  // 섹션1 span.word 인덱스붙이고 delay 넣기
-  wordDelayFunc('.sec .inner', 0);
 
   // 섹션4 news 영역 .news-bottom p의 글자수 체크 영역(ellipsis)
   $('.news-bottom p').each(function() {
