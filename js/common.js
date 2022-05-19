@@ -76,18 +76,78 @@ $(function() {
     $('.langList').slideToggle();
   })
 
-  // 스크롤 한번 내려가면 상단바 흰색으로 고정
-  let wHeight = $(window).height();
+  // 스크롤 반응 영역
   $(window).scroll(function() {
+    let wHeight = $(window).height();
+    let scrTop = $(this).scrollTop();
+
+    // 상단바 반응 영역 (스크롤 한번 내려가면 상단바 흰색으로 고정, top-btn 숨기기)
     if($(this).scrollTop() != 0) {
       $('.header-wrap').addClass('fixed');
       colorChangeFunc('.header-wrap', 'fixed');
       $('.header-box').css('background', 'none');
+      $('.footer-inner .top-btn').addClass('on');
     } else {
       $('.header-wrap').removeClass('fixed');
       colorChangeFunc('.header-wrap', 'fixed');
       $('.header-box').css('background', 'none');
+      $('.footer-inner .top-btn').removeClass('on');
     }
+
+    // move 반응 영역
+    $('.sec').each(function() {
+      let thisOffset = $(this).offset();
+      if(scrTop >= thisOffset.top - 200 && scrTop < thisOffset.top + wHeight) {
+        $(this).addClass('on');
+        $(this).find('.title-box').addClass('move');
+        // $(this).find('.left').addClass('move');
+        // $(this).find('.right').addClass('move');
+        $(this).find('.cnt-inner').addClass('move');
+        // $(this).find('.stock').addClass('move');
+        // $(this).find('.nation-box').addClass('move');
+        $(this).find('.cnt-box').addClass('move');
+      }
+    });
+
+    // 섹션1 반응 영역
+    $('.business').find('.con').each(function() {
+      let thisOffset = $(this).offset();
+      if(scrTop >= thisOffset.top - 500 && scrTop < thisOffset.top + 500) {
+        $(this).find('.left').addClass('move');
+        $(this).find('.right').addClass('move');
+      }
+    });
+
+    // 섹션2 반응 영역
+    $('.about').find('.left').each(function() {
+      let thisOffset = $(this).offset();
+      if(scrTop >= thisOffset.top - 500 && scrTop < thisOffset.top + 500) {
+        $(this).addClass('move');
+      }
+    });
+    if(scrTop >= $('.stock').offset().top - 500) {
+      $('.stock').addClass('move');
+    }
+
+    // 섹션3 반응 영역
+    if(scrTop >= $('.global').offset().top + 100) {
+      $('.global').addClass('on');
+      $('.global').find('.nation-box').addClass('move');
+    }
+
+    // 서브섹션 반응 영역
+    if(scrTop >= $('.recruit').offset().top - 500) {
+      $('.recruit').find('.left').addClass('move');
+      $('.recruit').find('.right').addClass('move');
+    }
+
+    // 라인 배경 반응 영역
+    $('.sec').find('.clip').each(function() {
+      let thisOffset = $(this).offset();
+      if(scrTop >= thisOffset.top - 500 && scrTop < thisOffset.top + 500) {
+        $(this).addClass('move');
+      }
+    });
   });
 
   // 메인화면 유투브 영상을 배경으로 사용(JQuery.mb.YTPlayer 사용)
@@ -116,16 +176,30 @@ $(function() {
 
   // word의 span에 delay 적용하기
   function wordDelayFunc(el, num) {
-    let wordIdx = 0;
+    let thisIdx = 0;
     $(el).find('.word').find('span').each(function() {
-      $(this).css('--char-index', wordIdx).css('animation-delay', `${num + (0.03 * wordIdx)}s`);
-      wordIdx++;
+      $(this).css('--char-index', thisIdx).css('animation-delay', `${num + (0.03 * thisIdx)}s`);
+      thisIdx++;
     });
   }
 
   // 섹션1 business에 동영상 넣기
   $('#sec1-video1').YTPlayer();
   $('#sec1-video2').YTPlayer();
+
+  // 섹션2 about의 count 반응 영역
+  let cntNum = $('.about .price');
+  function commaNum(num) { // 콤마 넣는 함수
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 세자리수 마다 숫자에 콤마넣는 정규식 사용
+  }
+  cntNum.prop('Counter', 0).animate({Counter: $(cntNum).text()}, {
+    duration: 4000, // 지속시간 4초
+    easing: 'swing', // 애니메이션 효과 방식
+    step: function(now) { // 애니메이션 과정을 받아와 콜백함수 적용
+      let nowNum = commaNum(Math.ceil(now)); // now를 반올림한 뒤 콤마넣는 함수 적용
+      $(cntNum).text(nowNum); // html에 넣어줌
+    }
+  });
 
   // 섹션4 news 영역 .news-bottom p의 글자수 체크 영역(ellipsis)
   $('.news-bottom p').each(function() {
@@ -138,12 +212,46 @@ $(function() {
     }
   });
 
+  // 섹션4 news 영역 li에 delay 적용하기
+  listDelayFunc('.news-box', 0);
+
+  function listDelayFunc(el, num) {
+    let thisIdx = 0;
+    $(el).find('.news-li').each(function() {
+      $(this).css('--char-index', thisIdx).css('transition-delay', `${num + (0.2 * thisIdx)}s`);
+      thisIdx++;
+    });
+  }
+
   // 푸터영역 왼쪽박스 family-box 서브리스트 on 클래스 toggle
   $('.family-open').click(function() {
     $(this).toggleClass('on');
     $('.family-list').slideToggle();
+    $(this).find('a').click(function() {
+      return false;
+    });
   });
 
-  // 스크롤이벤트 move 클래스 추가
+  // 푸터영역 오른쪽박스 input 체크시 css 적용
+  let checked = 0;
+  $('#footer .check-box, #footer label').click(function() {
+    if (checked == 0) {
+      $('#footer input').attr('checked', true);
+      checked = 1;
+      $('#footer .f-right .check-box').find('img').css('filter', 'opacity(.6) drop-shadow(0 0 0 #03ff70)');
+    } else if (checked == 1) {
+      $('#footer input').attr('checked', false);
+      checked = 0;
+      $('#footer .f-right .check-box').find('img').css('filter', 'none');
+    }
+  });
+
+  // 푸터영역 top-btn 클릭시 맨 위로 이동
+  $('.footer-inner .top-btn a').click(function() {
+    let thisHash = $(this.hash);
+    $('html, body').stop();
+    $('html, body').animate({scrollTop: thisHash.offset().top}, 1500);
+    return false;
+  });
 
 });
