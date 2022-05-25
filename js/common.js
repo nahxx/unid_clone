@@ -36,7 +36,37 @@ $(function() {
   $('.closeBtn').click(function() {
     $('.sideGnb').removeClass('open');
     $('.right-box').css('visibility', 'visible');
-  })
+  });
+
+  // 모바일 gnb open
+  $('.mBtn').click(function() {
+    $('#m-gnb').addClass('open');
+    $('.header-wrap, .header-box, .right-box').css('visibility', 'hidden');
+    // $('.header-wrap').css('visibility', 'hidden');
+    // $('.right-box').css('visibility', 'hidden');
+    setTimeout(function() {
+      $('.searchBox').removeClass('open');
+    }, 500);
+  });
+  $('.closeBtn').click(function() {
+    $('#m-gnb').removeClass('open');
+    $('.header-wrap, .header-box, .right-box').css('visibility', 'visible');
+  });
+
+  // 모바일 gnb 슬라이드
+  $('.m-gnb1 > li > a').click(function() {
+    let isAni = $('.m-gnb1 > li .m-gnb2').is(':animated');
+    if(!isAni) {
+      if($('+.m-gnb2', this).css('display') == 'none') {
+        $('.m-gnb1 > li').removeClass('active');
+        $(this).parent().addClass('active');
+        $('.m-gnb1 > li .m-gnb2').slideUp('slow');
+        $('+.m-gnb2', this).slideDown('slow');
+      } else {
+        $('+.m-gnb2', this).slideUp('slow');
+      }
+    }
+  });
   // .inner mouseover
   let downloadEl = $('.sideGnb .sideinner .inner .sideGnb1 li:last-child .inner a');
   downloadEl.mouseover(function() {
