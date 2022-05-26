@@ -1,5 +1,6 @@
 'use strict'
 $(function() {
+  // 윈도우 로드 완료시 #load 숨김 처리
   // 상단바 open class 추가
   // mouseover 이벤트
   $('.gnb1').mouseover(function() {

@@ -1021,15 +1021,15 @@ nav#top-gnb {
 }
 
 /* 로딩 화면 영역 */
-#load {
+.load {
 	position: fixed;
-	width: 100vw;
-	height: 100vh;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	background: black;
 	text-align: center;
-}
-.not-load {
-	display: none;
 }
 /* 메인 화면 영역 */
 section.main {
