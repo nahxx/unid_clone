@@ -16,6 +16,13 @@
     <script type="text/javascript" src="./js/common.js"></script>
   </head>
   <body>
+    <!-- <div id="load">
+      <div class="ring">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="54" cy="54" r="54"></circle>
+        </svg>
+      </div>
+    </div> -->
     <div id="wrap">
       <!-- 헤더 영역 -->
       <!-- 헤더 상단 -->
@@ -423,6 +430,13 @@
         </div>
       </header>
       <!-- 메인화면 영역 -->
+      <div id="load">
+        <div class="ring">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="54" cy="54" r="54"></circle>
+          </svg>
+        </div>
+      </div>
       <section id="main" class="main">
         <div class="bg-video-wrap">
           <div id="bg-video" class="player" data-property="{
@@ -440,6 +454,7 @@
           }">
           </div>
         </div>
+        <div class="bg-wrap"></div>
         <div class="inner-wrap">
           <div class="inner area">
             <div class="txt-box">
@@ -1110,6 +1125,10 @@
       </footer>
     </div>
     <script>
+      // 윈도우 로드 완료시 #load 숨김 처리
+      $(window).load(function() {
+        $('#load').hide();
+      });
       var swiper = new Swiper(".mySwiper", {
         slidesPerView : 'auto',
         loop : true,   // 슬라이드 반복 여부
