@@ -224,7 +224,7 @@ $(function() {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 세자리수 마다 숫자에 콤마넣는 정규식 사용
   }
   cntNum.prop('Counter', 0).animate({Counter: $(cntNum).text()}, {
-    duration: 4000, // 지속시간 4초
+    duration: 5000, // 지속시간 5초
     easing: 'swing', // 애니메이션 효과 방식
     step: function(now) { // 애니메이션 과정을 받아와 콜백함수 적용
       let nowNum = commaNum(Math.ceil(now)); // now를 반올림한 뒤 콤마넣는 함수 적용

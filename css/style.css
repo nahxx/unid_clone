@@ -1821,6 +1821,12 @@ section.main {
 	width: 78px;
 	height: 32px;
 }
+.global .map-box-m {
+	display: none;
+}
+.global .map-box-m img {
+	display: none;
+}
 
 /* 서브섹션 채용정보/홍보영상 영역 */
 .sub {
@@ -2675,6 +2681,7 @@ section.main {
 		background: linear-gradient(135deg, rgba(212, 237, 221, 1) 0%, rgba(242, 223, 220, 1) 100%);
 	}
 	.global .map-box-m img {
+		display: block;
 		width: 100%;
 		height: auto;
 	}
